@@ -13,6 +13,16 @@ body {
   outline: none;
   border: none;
 }
+/* input field text font size */
+#input-style {
+  font-size: 1.5rem;
+}
+
+#button-addon2 {
+  font-size: 1.5rem;
+  background-color: #157347;
+  color: white;
+}
 .search-box {
   /* border: 1px solid rgb(3, 118, 211); */
   width: 60%;
@@ -20,7 +30,6 @@ body {
   margin: auto;
   margin-top: 50px;
   border-right: none;
-  font-size: 3rem;
 }
 .search-button {
   padding: 30px 50px;
@@ -42,6 +51,7 @@ body {
   margin: auto;
   align-items: center;
   justify-content: center;
+  /* background-color: gray; */
 }
 .single-product {
   padding: 10px;
@@ -80,7 +90,7 @@ body {
   margin-bottom: 5px;
   border-radius: 10px;
   color: gray;
-  width: 30%;
+  width: 40%;
 }
 
 @media only screen and (max-width: 768px) {
