@@ -40,8 +40,7 @@ const addToCart = (id, price) => {
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
-  const converted = parseInt(element);
-  // console.log(typeof converted, converted);
+  const converted = parseFloat(element);
   return converted;
 };
 // main price update function
