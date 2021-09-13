@@ -18,8 +18,11 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
+      <h5 class="rating">rating: ${product.rating.rate}</h5>
+      <h5 class="rating">ratingCount: ${product.rating.rate}</h5>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <button id="details-btn" class="btn btn-danger">Details</button></div>
+
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -32,6 +35,7 @@ const addToCart = (id, price) => {
 
   updateTaxAndCharge();
   document.getElementById("total-Products").innerText = count;
+  updateTotal();
 };
 
 const getInputValue = (id) => {
@@ -40,26 +44,22 @@ const getInputValue = (id) => {
   // console.log(typeof converted, converted);
   return converted;
 };
-
 // main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
-  // console.log(typeof convertedOldPrice);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  console.log(total);
   // here was an bug. for fixed this bug delete math.round(total);
-  document.getElementById(id).innerText = parseFloat(total).toFixed(2);
+  document.getElementById(id).innerText = total.toFixed(2);
 };
-
 // set innerText function
 const setInnerText = (id, value) => {
   document.getElementById(id).innerText = Math.round(value);
 };
-
 // update delivery charge and total Tax
 const updateTaxAndCharge = () => {
-  const priceConverted = getInputValue("price");
+  // calculted to money
+  let priceConverted = getInputValue("price");
   if (priceConverted > 200) {
     setInnerText("delivery-charge", 30);
     setInnerText("total-tax", priceConverted * 0.2);
@@ -72,13 +72,16 @@ const updateTaxAndCharge = () => {
     setInnerText("delivery-charge", 60);
     setInnerText("total-tax", priceConverted * 0.4);
   }
+  // here is calling total money calculated and passing the total taka;
+  // priceConverted = parseFloat(priceConverted);
+  // updateTotal(priceConverted);
 };
-
 //grandTotal update function
 const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  // console.log(grandTotal);
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
-loadProducts();
+loadProducts(); //calling load data
