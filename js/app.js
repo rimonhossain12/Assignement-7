@@ -49,7 +49,7 @@ const updatePrice = (id, value) => {
   const total = convertedOldPrice + convertPrice;
   console.log(total);
   // here was an bug. for fixed this bug delete math.round(total);
-  document.getElementById(id).innerText = total;
+  document.getElementById(id).innerText = parseFloat(total).toFixed(2);
 };
 
 // set innerText function
